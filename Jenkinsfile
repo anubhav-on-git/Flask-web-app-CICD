@@ -3,14 +3,27 @@ pipeline {
 
     stages {
 
-        stage('Move to project directory and Build and run the application') {
+        stage('Clone Repo') {
             steps {
-                dir('D:\\Anubhav\\Projects\\Devops_Project_1\\DevOps-Project-Two-Tier-Flask-App') {
-                    // Your build steps here
-                    bat 'docker build -t flask-app .'
-                    bat 'docker-compose down'
-                    bat 'docker-compose up --build -d'
-                }
+                git 'https://github.com/anubhav-on-git/Flask-web-app-CICD.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t flask-app .'
+            }
+        }
+
+        stage('Stop Old Containers') {
+            steps {
+                bat 'docker-compose down'
+            }
+        }
+
+        stage('Run Containers') {
+            steps {
+                bat 'docker-compose up --build -d'
             }
         }
 
