@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Clone Repo') {
-            steps {
-                git 'https://github.com/anubhav-on-git/Flask-web-app-CICD.git'
-            }
-        }
+        // jenkins already does checkout automatically when using pipeline from SCM
+        // stage('Clone Repo') {
+        //     steps {
+        //         git 'https://github.com/anubhav-on-git/Flask-web-app-CICD.git'
+        //     }
+        // }
 
         stage('Build Docker Image') {
             steps {
