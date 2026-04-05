@@ -23,5 +23,5 @@ services:
       MYSQL_DATABASE: flask_db
       MYSQL_USER: flaskuser
       MYSQL_PASSWORD: password
-    ports:
-      - "3307:3306"
+    # ports:
+    #   - "3307:3306"
