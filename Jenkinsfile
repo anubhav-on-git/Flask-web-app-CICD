@@ -11,19 +11,19 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t flask-app .'
+                sh 'docker build -t flask-app .'
             }
         }
 
         stage('Stop Old Containers') {
             steps {
-                bat 'docker-compose down'
+                sh 'docker-compose down'
             }
         }
 
         stage('Run Containers') {
             steps {
-                bat 'docker-compose up --build -d'
+                sh 'docker-compose up --build -d'
             }
         }
 
